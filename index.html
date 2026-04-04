@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Defterdar Muhasebe</title>
+  <title>Defterdar Muhasebe | Altın Standartta Profesyonel Çözüm</title>
+  <!-- Favicon: defterdar.png (gerçek dosya ile çalışır) -->
   <link rel="icon" href="defterdar.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,18 +17,30 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0f1a;
-      color: #eef2ff;
+      background: #0a1a0f;  /* derin koyu yeşil zemin */
+      color: #eef2e6;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* Koyu gradient arka plan */
+    /* ---- altın & koyu yeşil gradient arka plan ---- */
     .gradient-bg {
-      background: radial-gradient(circle at 10% 30%, rgba(0, 150, 255, 0.08), rgba(0, 0, 0, 0.4)), linear-gradient(135deg, #0a0f1a 0%, #0f1622 100%);
+      background: radial-gradient(circle at 25% 20%, rgba(212, 175, 55, 0.12), rgba(10, 26, 15, 0.95)), 
+                  linear-gradient(135deg, #0a1a0f 0%, #0c2312 100%);
+      position: relative;
     }
 
-    /* modern butonlar */
+    /* altın detay dokunuşu */
+    .gold-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* modern butonlar - altın vurgu */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -36,35 +49,38 @@
       border-radius: 60px;
       font-weight: 600;
       font-size: 1rem;
-      transition: all 0.25s ease;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       cursor: pointer;
       border: none;
       text-decoration: none;
+      letter-spacing: -0.2px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #1a6dd4, #0e4a8c);
-      color: white;
-      box-shadow: 0 8px 20px rgba(26, 109, 212, 0.25);
+      background: linear-gradient(135deg, #d4af37, #b58c1a);
+      color: #0a1f0c;
+      box-shadow: 0 10px 24px -6px rgba(212, 175, 55, 0.35);
+      font-weight: 700;
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 30px -8px rgba(26, 109, 212, 0.4);
-      background: linear-gradient(135deg, #2580e8, #125aa8);
+      box-shadow: 0 20px 30px -12px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(135deg, #e6c34a, #c79c28);
+      color: #051007;
     }
 
     .btn-outline {
       background: transparent;
-      border: 1.5px solid #2a3a55;
-      color: #7aa9d4;
+      border: 1.5px solid #d4af37;
+      color: #e9d7a3;
     }
 
     .btn-outline:hover {
-      border-color: #1a6dd4;
-      background: rgba(26, 109, 212, 0.1);
+      border-color: #ecc63e;
+      background: rgba(212, 175, 55, 0.12);
       transform: translateY(-2px);
-      color: #c2ddff;
+      color: #ffecb3;
     }
 
     .container {
@@ -73,40 +89,58 @@
       padding: 0 32px;
     }
 
-    /* navbar */
+    /* navbar - premium */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 0;
+      padding: 28px 0 20px;
       flex-wrap: wrap;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
     }
 
+    /* logo-icon artık resim barındıracak: defterdar.png */
     .logo-icon {
-      background: linear-gradient(145deg, #1a6dd4, #0e4a8c);
-      width: 42px;
-      height: 42px;
-      border-radius: 18px;
+      width: 48px;
+      height: 48px;
+      background: #102312;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: white;
-      box-shadow: 0 8px 14px rgba(26, 109, 212, 0.3);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 175, 55, 0.3);
+      overflow: hidden;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* yedek olarak simge (resim yoksa D harfi) ama resim öncelikli */
+    .logo-icon .fallback-icon {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #d4af37, #e6c34a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: none;
     }
 
     .logo-text {
       font-weight: 800;
-      font-size: 1.6rem;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffffff, #7aa9d4);
+      font-size: 1.75rem;
+      letter-spacing: -0.8px;
+      background: linear-gradient(135deg, #fff6df, #d4af37);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -114,28 +148,29 @@
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 38px;
       align-items: center;
     }
 
     .nav-links a {
       text-decoration: none;
       font-weight: 500;
-      color: #b0c4e7;
+      color: #d9e0c5;
       transition: 0.2s;
+      font-size: 1rem;
     }
 
     .nav-links a:hover {
-      color: #1a6dd4;
+      color: #d4af37;
     }
 
-    /* hero */
+    /* hero bölümü */
     .hero {
-      padding: 60px 0 80px;
+      padding: 70px 0 90px;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 48px;
+      gap: 56px;
       justify-content: space-between;
     }
 
@@ -145,23 +180,25 @@
     }
 
     .badge {
-      background: rgba(26, 109, 212, 0.15);
-      color: #5dafff;
-      border-radius: 60px;
-      padding: 6px 16px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      background: rgba(212, 175, 55, 0.18);
+      color: #e6c768;
+      border-radius: 80px;
+      padding: 6px 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
       display: inline-block;
-      margin-bottom: 24px;
-      border: 1px solid rgba(26, 109, 212, 0.3);
+      margin-bottom: 28px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      backdrop-filter: blur(2px);
+      letter-spacing: 0.3px;
     }
 
     .hero h1 {
-      font-size: 3.3rem;
+      font-size: 3.6rem;
       font-weight: 800;
       line-height: 1.2;
-      letter-spacing: -1px;
-      background: linear-gradient(to right, #ffffff, #7aa9d4);
+      letter-spacing: -1.5px;
+      background: linear-gradient(to right, #ffffff, #eedb88, #d4af37);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
@@ -169,60 +206,62 @@
     }
 
     .hero p {
-      font-size: 1.1rem;
-      color: #9bb5d4;
-      max-width: 500px;
-      margin-bottom: 32px;
-      line-height: 1.4;
+      font-size: 1.15rem;
+      color: #c8dbb4;
+      max-width: 540px;
+      margin-bottom: 36px;
+      line-height: 1.45;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 16px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
     .hero-image {
       flex: 1;
-      background: rgba(15, 25, 45, 0.6);
-      border-radius: 42px;
-      padding: 20px;
+      background: rgba(12, 30, 15, 0.65);
+      border-radius: 44px;
+      padding: 24px;
       text-align: center;
-      box-shadow: 0 25px 40px -20px rgba(0,0,0,0.5);
-      border: 1px solid rgba(26, 109, 212, 0.2);
-      backdrop-filter: blur(4px);
+      box-shadow: 0 30px 40px -20px rgba(0,0,0,0.7);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      backdrop-filter: blur(6px);
     }
 
     .mockup {
-      background: rgba(10, 18, 30, 0.8);
-      border-radius: 28px;
-      padding: 20px 12px;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
-      border: 1px solid rgba(26, 109, 212, 0.2);
+      background: #0b1e0e;
+      border-radius: 32px;
+      padding: 24px 20px;
+      box-shadow: 0 18px 36px -12px rgba(0,0,0,0.6);
+      border: 1px solid rgba(212, 175, 55, 0.25);
     }
 
     .mockup-bar {
-      background: #1e2a3e;
-      height: 24px;
-      border-radius: 30px;
-      width: 80%;
-      margin: 0 auto 16px;
+      background: linear-gradient(90deg, #d4af37, #b58c1a);
+      height: 8px;
+      border-radius: 20px;
+      width: 35%;
+      margin: 0 0 24px 0;
     }
 
     .grid-demo {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
 
     .demo-card {
-      background: #131e2c;
-      border-radius: 18px;
-      height: 70px;
+      background: #132e19;
+      border-radius: 20px;
+      height: 85px;
       transition: 0.2s;
+      border: 1px solid rgba(212, 175, 55, 0.15);
     }
     .demo-card:hover {
-      background: #1a2a3e;
+      background: #1a4022;
+      border-color: #d4af37;
     }
 
     /* features */
@@ -232,160 +271,171 @@
 
     .section-title {
       text-align: center;
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 16px;
-      color: #ffffff;
+      margin-bottom: 18px;
+      color: #f9efcf;
     }
 
     .section-sub {
       text-align: center;
-      color: #8aa9cc;
-      max-width: 600px;
-      margin: 0 auto 56px;
+      color: #bdd6a5;
+      max-width: 620px;
+      margin: 0 auto 60px;
+      font-size: 1.05rem;
     }
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 44px;
     }
 
     .feature-card {
-      background: rgba(18, 28, 45, 0.7);
+      background: rgba(10, 28, 13, 0.7);
       backdrop-filter: blur(8px);
-      padding: 28px 24px;
-      border-radius: 32px;
-      transition: all 0.25s;
-      border: 1px solid rgba(26, 109, 212, 0.15);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+      padding: 32px 28px;
+      border-radius: 36px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
     }
 
     .feature-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(26, 109, 212, 0.4);
-      box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.5);
-      background: rgba(22, 34, 55, 0.8);
+      transform: translateY(-8px);
+      border-color: #d4af37;
+      box-shadow: 0 26px 34px -14px rgba(0, 0, 0, 0.6);
+      background: rgba(16, 40, 19, 0.85);
     }
 
     .feature-icon {
-      background: rgba(26, 109, 212, 0.15);
-      width: 54px;
-      height: 54px;
-      border-radius: 24px;
+      background: rgba(212, 175, 55, 0.15);
+      width: 62px;
+      height: 62px;
+      border-radius: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      color: #5dafff;
-      margin-bottom: 24px;
+      font-size: 1.9rem;
+      color: #e7c35c;
+      margin-bottom: 28px;
     }
 
     .feature-card h3 {
-      color: #ffffff;
-      margin-bottom: 12px;
+      color: #f7efcf;
+      margin-bottom: 14px;
+      font-weight: 700;
     }
 
     .feature-card p {
-      color: #9bb5d4;
-      line-height: 1.5;
+      color: #c2dfae;
+      line-height: 1.55;
     }
 
-    /* screenshots */
+    /* screens (ekran) altın dokunuşlar */
     .screens {
-      background: rgba(10, 18, 30, 0.5);
-      border-radius: 48px;
-      backdrop-filter: blur(4px);
+      background: rgba(6, 22, 9, 0.6);
+      border-radius: 56px;
+      backdrop-filter: blur(5px);
+      padding: 30px 0 50px;
     }
 
     .screenshot-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 24px;
-      margin-top: 32px;
+      gap: 30px;
+      margin-top: 20px;
     }
 
     .screenshot-item {
-      background: rgba(18, 28, 45, 0.8);
-      border-radius: 28px;
-      box-shadow: 0 20px 32px -12px rgba(0,0,0,0.4);
-      padding: 12px;
-      width: 220px;
+      background: rgba(12, 32, 15, 0.9);
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -15px rgba(0,0,0,0.6);
+      padding: 16px;
+      width: 240px;
       text-align: center;
-      border: 1px solid rgba(26, 109, 212, 0.2);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      transition: 0.2s;
     }
 
-    .screen-placeholder {
-      background: linear-gradient(145deg, #101a28, #0a0f18);
-      height: 380px;
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #5dafff;
-      font-weight: 500;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* CTA */
-    .cta {
-      background: linear-gradient(135deg, #0e1a2a, #0a1020);
-      border-radius: 48px;
-      padding: 56px 48px;
-      text-align: center;
-      color: white;
-      border: 1px solid rgba(26, 109, 212, 0.3);
-    }
-
-    .cta h2 {
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-
-    .cta .btn-primary {
-      background: linear-gradient(135deg, #1a6dd4, #0e4a8c);
-      color: white;
-      margin-top: 20px;
-      box-shadow: 0 5px 20px rgba(26, 109, 212, 0.3);
-    }
-
-    .cta .btn-primary:hover {
-      background: linear-gradient(135deg, #2580e8, #125aa8);
+    .screenshot-item:hover {
+      border-color: #d4af37;
       transform: scale(1.02);
     }
 
-    footer {
-      border-top: 1px solid rgba(26, 109, 212, 0.2);
-      padding: 48px 0;
+    .screen-placeholder {
+      background: linear-gradient(145deg, #102f16, #08220c);
+      height: 390px;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      color: #e7c35c;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .screen-placeholder i {
+      font-size: 2.7rem;
+    }
+
+    /* CTA bölümü - altın ve zengin */
+    .cta {
+      background: linear-gradient(115deg, #0c2b13, #051007);
+      border-radius: 56px;
+      padding: 64px 48px;
       text-align: center;
-      color: #6a8bb0;
+      border: 1px solid #d4af37;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+    }
+
+    .cta h2 {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+      color: #fff3da;
+    }
+
+    .cta .btn-primary {
+      background: linear-gradient(135deg, #d4af37, #b58c1a);
+      margin-top: 24px;
+      font-size: 1.05rem;
+      padding: 15px 38px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 50px 0;
+      text-align: center;
+      color: #a2bf89;
     }
 
     @media (max-width: 800px) {
-      .hero h1 { font-size: 2.4rem; }
+      .hero h1 { font-size: 2.5rem; }
       .navbar { flex-direction: column; gap: 20px; }
-      .nav-links { gap: 24px; flex-wrap: wrap; justify-content: center; }
+      .nav-links { gap: 28px; flex-wrap: wrap; justify-content: center; }
       .container { padding: 0 24px; }
-      .hero { padding: 30px 0; }
+      .hero { padding: 40px 0; }
+      .cta { padding: 40px 24px; }
     }
 
-    /* download modal - koyu tema */
+    /* Modal - altın & koyu yeşil uyumu */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
       visibility: hidden;
       opacity: 0;
-      transition: 0.2s;
+      transition: 0.25s ease;
       z-index: 1000;
     }
 
@@ -395,41 +445,44 @@
     }
 
     .modal-card {
-      background: #0f1622;
-      max-width: 420px;
+      background: #0f2a15;
+      max-width: 440px;
       width: 90%;
-      border-radius: 2rem;
-      padding: 32px;
+      border-radius: 2.5rem;
+      padding: 38px 28px;
       text-align: center;
-      border: 1px solid rgba(26, 109, 212, 0.3);
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      border: 1.5px solid rgba(212, 175, 55, 0.7);
+      box-shadow: 0 35px 55px -20px black;
     }
 
     .modal-card h3 {
-      color: white;
+      color: #ffefbf;
+      font-weight: 800;
+      font-size: 1.7rem;
     }
 
     .modal-card p {
-      color: #8aa9cc;
+      color: #c8e0b5;
+      margin: 12px 0 18px;
     }
 
     .download-btn {
       display: block;
-      background: #1a2538;
+      background: #1b3b21;
       margin: 16px 0;
       padding: 14px;
       border-radius: 60px;
       text-decoration: none;
-      font-weight: 600;
-      color: #c2ddff;
-      transition: 0.1s;
-      border: 1px solid rgba(26, 109, 212, 0.2);
+      font-weight: 700;
+      color: #ffeaac;
+      transition: 0.2s;
+      border: 1px solid rgba(212, 175, 55, 0.5);
     }
 
     .download-btn:hover {
-      background: #1e2e48;
-      color: white;
-      border-color: #1a6dd4;
+      background: #2b582e;
+      color: #ffffff;
+      border-color: #d4af37;
     }
   </style>
 </head>
@@ -439,23 +492,28 @@
   <div class="container">
     <nav class="navbar">
       <div class="logo">
-        <div class="logo-icon">D</div>
-        <span class="logo-text">Defterdar Muhasebe *DEMO</span>
+        <div class="logo-icon">
+          <!-- defterdar.png gerçek dosyadan yüklenir, gözükmesi için -->
+          <img src="defterdar.png" alt="Defterdar Logo" onerror="this.onerror=null; this.parentElement.querySelector('.fallback-icon').style.display='flex'; this.style.display='none';">
+          <div class="fallback-icon" style="display: none;">D</div>
+        </div>
+        <span class="logo-text">Defterdar Muhasebe</span>
       </div>
       <div class="nav-links">
-        <a href="#ozellikler">Özellikler</a>
-        <a href="#ekran">Ekran Görüntüleri</a>
-        <a href="#indir" id="indirNavBtn">İndir</a>
+        <a href="#ozellikler"><i class="fas fa-crown" style="margin-right: 6px;"></i> Özellikler</a>
+        <a href="#ekran"><i class="fas fa-images"></i> Ekran Görüntüleri</a>
+        <a href="#" id="indirNavBtn"><i class="fas fa-gem"></i> İndir</a>
       </div>
     </nav>
 
     <div class="hero">
       <div class="hero-content">
-        <span class="badge"><i class="fas fa-star" style="margin-right: 6px;"></i></span>
-        <h1>Muhasebenin Geleceği<br>Defterdar ile Geliyor!</h1>
-        <p>Şuanda Demo versiyonu olan Defterdar Muhasebe tamamen ücretsiz olarak sizlere sunuluyor! Akıllı faturalandırma, otomatik mutabakat, anlık raporlama. İşletmenizi bir üst seviyeye taşıyın.</p>
+        <span class="badge"><i class="fas fa-medal"></i> Premium Yazılım Deneyimi</span>
+        <h1>Muhasebenin Altın Standardı<br>Defterdar ile Yükselin</h1>
+        <p>Demo sürümü tamamen ücretsiz, kurumsal güçte. e-Fatura, otomatik mutabakat, anlık altın raporlar. Dernekler, STK’lar ve işletmeler için geliştirilmiş profesyonel çözüm.</p>
         <div class="hero-buttons">
           <button class="btn btn-primary" id="heroDownloadBtn"><i class="fas fa-download"></i> Hemen İndir</button>
+          <a href="#ozellikler" class="btn btn-outline"><i class="fas fa-play-circle"></i> Keşfet</a>
         </div>
       </div>
       <div class="hero-image">
@@ -465,6 +523,7 @@
             <div class="demo-card"></div><div class="demo-card"></div><div class="demo-card"></div>
             <div class="demo-card"></div><div class="demo-card"></div><div class="demo-card"></div>
           </div>
+          <div style="margin-top: 20px; font-size: 0.75rem; color: #e7c35c;"><i class="fas fa-chart-line"></i> Gerçek zamanlı gösterge paneli</div>
         </div>
       </div>
     </div>
@@ -473,24 +532,24 @@
 
 <div class="container" id="ozellikler">
   <div class="section">
-    <div class="section-title">Neden Defterdar?</div>
-    <div class="section-sub">Akıllı, hızlı ve son derece güvenli. Muhasebe işlerinizi kolaylaştırmak için tasarlandı.</div>
+    <div class="section-title"><i class="fas fa-gem" style="color: #d4af37; margin-right: 12px;"></i>Neden Defterdar?</div>
+    <div class="section-sub">Akıllı analiz, yasal uyum ve altın standartta güvenlik. Muhasebe süreçlerinizi yeniden tanımlayın.</div>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>Gerçek Zamanlı Analiz</h3><p>Anlık nakit akışı, kâr zarar ve bilanço takibi, destekli öngörülerle.</p></div>
-      <div class="feature-card"><div class="feature-icon"><i class="fas fa-file-invoice"></i></div><h3>e-Fatura & e-Arşiv</h3><p>Entegre fatura kesme, otomatik muhasebeleştirme ve yasal defterlere uyum.</p></div>
-      <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Tüm Kurumlara Uyumlu </h3><p>Yardım dernekleri, sivil toplum kuruluşları ve birçok kurum için uyumlu. </p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>Gerçek Zamanlı Analiz</h3><p>Altın destekli dashboard ile nakit akışı, kar-zarar ve bilanço anlık takip. Tahmine dayalı raporlama.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-file-invoice"></i></div><h3>e-Fatura & e-Arşiv</h3><p>Entegre fatura yönetimi, otomatik muhasebeleştirme ve mevzuata %100 uyum. Dijital defterlere anında aktarım.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Kurumlara Özel Uyum</h3><p>Dernekler, vakıflar, STK'lar ve tüm işletmeler için özel modüller. Yasal defterlere tam uyumluluk.</p></div>
     </div>
   </div>
 </div>
 
 <div class="container" id="ekran">
   <div class="section screens">
-    <div class="section-title">Ekran Görüntüleri</div>
-    <div class="section-sub">Defterdar'ın şık ve işlevsel arayüzüne bir göz atın.</div>
+    <div class="section-title"><i class="fas fa-desktop" style="color: #d4af37;"></i> Arayüzden Öne Çıkanlar</div>
+    <div class="section-sub">Altın dokunuşlu modern tasarım, kullanımı kolay ve profesyonel.</div>
     <div class="screenshot-row">
-      <div class="screenshot-item"><div class="screen-placeholder"><i class="fas fa-chart-simple" style="font-size: 2rem;"></i><br>Dashboard</div></div>
-      <div class="screenshot-item"><div class="screen-placeholder"><i class="fas fa-file-invoice-dollar"></i><br>Faturalar</div></div>
-      <div class="screenshot-item"><div class="screen-placeholder"><i class="fas fa-chart-pie"></i><br>Raporlar</div></div>
+      <div class="screenshot-item"><div class="screen-placeholder"><i class="fas fa-chart-simple"></i><br>Altın Dashboard</div></div>
+      <div class="screenshot-item"><div class="screen-placeholder"><i class="fas fa-file-invoice-dollar"></i><br>Akıllı Faturalar</div></div>
+      <div class="screenshot-item"><div class="screen-placeholder"><i class="fas fa-chart-pie"></i><br>Premium Raporlar</div></div>
     </div>
   </div>
 </div>
@@ -498,8 +557,8 @@
 <div class="container">
   <div class="section">
     <div class="cta">
-      <h2>Defterdar’ı bugün keşfetmeye başlayın</h2>
-      <p>Demo sürümü ücretsiz deneyin, kredi kartı gerekmez.</p>
+      <h2><i class="fas fa-crown" style="color: #d4af37;"></i> Defterdar’ı bugün keşfetmeye başlayın</h2>
+      <p>Demo sürümü ücretsiz, tüm özellikler açık. Kredi kartı gerekmez, hemen başlayın.</p>
       <button class="btn btn-primary" id="ctaDownloadBtn"><i class="fas fa-rocket"></i> Ücretsiz İndir</button>
     </div>
   </div>
@@ -507,19 +566,19 @@
 
 <footer>
   <div class="container">
-    <p>© 2026 CMS Team | Defterdar Muhasebe - Tüm hakları saklıdır.</p>
-    <p>Created By. İsmail DEMİRCAN</p>
+    <p>© 2026 CMS Gold Team | Defterdar Muhasebe - Tüm hakları saklıdır.</p>
+    <p style="margin-top: 12px;">Created By. İsmail DEMİRCAN <i class="fas fa-star-of-life" style="color: #d4af37;"></i></p>
   </div>
 </footer>
 
 <!-- Modal -->
 <div id="downloadModal" class="modal-overlay">
   <div class="modal-card">
-    <i class="fas fa-check-circle" style="font-size: 3rem; color: #1a6dd4;"></i>
-    <h3 style="margin: 16px 0 8px;">İndirmeye Hazırsınız</h3>
-    <p style="margin-bottom: 20px;">İşletim sisteminizi seçin</p>
-    <a href="#" class="download-btn" id="winDownload"><i class="fab fa-windows"></i> Windows için indir</a>
-    <button class="btn btn-outline" style="margin-top: 16px; width: 100%;" id="closeModalBtn">Kapat</button>
+    <i class="fas fa-gem" style="font-size: 3rem; color: #d4af37;"></i>
+    <h3>Defterdar'a Hoş Geldiniz</h3>
+    <p>İşletim sisteminizi seçerek yazılımı anında indirin.</p>
+    <a href="#" class="download-btn" id="winDownload"><i class="fab fa-windows"></i> Windows için indir (Setup.exe)</a>
+    <button class="btn btn-outline" style="margin-top: 20px; width: 100%; background: transparent; border-color: #d4af37;" id="closeModalBtn">Kapat</button>
   </div>
 </div>
 
@@ -534,33 +593,38 @@
       modal.classList.remove('modal-open');
     }
 
-    // İndirme butonları
+    // Tüm indirme tetikleyicileri
     const downloadTriggers = ['heroDownloadBtn', 'indirNavBtn', 'ctaDownloadBtn'];
     downloadTriggers.forEach(id => {
       const btn = document.getElementById(id);
       if(btn) btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
     });
 
-    document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
+    const closeBtn = document.getElementById('closeModalBtn');
+    if(closeBtn) closeBtn.addEventListener('click', closeModal);
     modal?.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
 
-    // Demo butonları - yönlendirme
-    function demoRedirect() {
-      alert("");
-      window.open("", "_blank");
+    // İndirme simülasyonu (demo)
+    const winBtn = document.getElementById('winDownload');
+    const macBtn = document.getElementById('macDownload');
+    if(winBtn) {
+      winBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("Windows sürümü indiriliyor...\nDefterdar Muhasebe Setup.exe hazırlanıyor.");
+        closeModal();
+      });
     }
-    const demoBtns = ['heroDemoBtn', 'demoNavBtn'];
-    demoBtns.forEach(id => {
-      const btn = document.getElementById(id);
-      if(btn) btn.addEventListener('click', (e) => { e.preventDefault(); demoRedirect(); });
-    });
+    if(macBtn) {
+      macBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert("macOS sürümü yakında! Demo şimdilik Windows için önceliklidir.");
+        closeModal();
+      });
+    }
 
-    // İndirme linkleri örnek (simülasyon)
-    const winLink = document.getElementById('winDownload');
-    if(winLink) winLink.addEventListener('click', (e) => { e.preventDefault(); alert("Windows sürümü indiriliyor... (Setup.exe)"); closeModal(); });
-    if(webLink) webLink.addEventListener('click', (e) => { e.preventDefault(); demoRedirect(); closeModal(); });
-
-    console.log("Defterdar AI muhasebe asistanı hazır.");
+    // Logo'da defterdar.png görüntüleniyor, fallback mekanizması çalışıyor
+    // Ek olarak tüm butonlara smooth deneyim
+    console.log("Defterdar Altın Sürüm aktif | Muhasebenin yıldızı");
   })();
 </script>
 </body>
