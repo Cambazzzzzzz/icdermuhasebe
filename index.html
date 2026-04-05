@@ -1,6 +1,6 @@
-  <!DOCTYPE html>
-  <html lang="tr">
-  <head>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Defterdar Muhasebe</title>
@@ -195,7 +195,6 @@
         margin-bottom: 32px;
       }
 
-      /* Giriş bilgileri kartı */
       .login-info {
         background: rgba(212, 175, 55, 0.1);
         border: 1px solid rgba(212, 175, 55, 0.4);
@@ -368,10 +367,10 @@
         .login-info p { font-size: 0.8rem; }
       }
     </style>
-  </head>
-  <body>
+</head>
+<body>
 
-  <div class="gradient-bg">
+<div class="gradient-bg">
     <div class="container">
       <nav class="navbar">
         <div class="logo">
@@ -397,7 +396,6 @@
             <a href="#ozellikler" class="btn btn-outline"><i class="fas fa-play-circle"></i> Keşfet</a>
           </div>
           
-          <!-- Giriş Bilgileri -->
           <div class="login-info">
             <h4><i class="fas fa-key"></i> Demo Giriş Bilgileri</h4>
             <p><i class="fas fa-user"></i> Kullanıcı Adı: <strong style="color:#d4af37;">DefterdarAdmin</strong></p>
@@ -417,9 +415,9 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
-  <div class="container" id="ozellikler">
+<div class="container" id="ozellikler">
     <div class="section">
       <div class="section-title"><i class="fas fa-gem" style="color: #d4af37; margin-right: 12px;"></i>Neden Defterdar?</div>
       <div class="section-sub">Akıllı analiz, yasal uyum ve altın standartta güvenlik. Muhasebe süreçlerinizi yeniden tanımlayın.</div>
@@ -429,9 +427,9 @@
         <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Kurumlara Özel Uyum</h3><p>Dernekler, vakıflar, STK'lar ve tüm işletmeler için özel modüller. Yasal defterlere tam uyumluluk.</p></div>
       </div>
     </div>
-  </div>
+</div>
 
-  <div class="container">
+<div class="container">
     <div class="section">
       <div class="cta">
         <h2><i class="fas fa-crown" style="color: #d4af37;"></i> Defterdar’ı bugün keşfetmeye başlayın</h2>
@@ -446,33 +444,26 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
-  <footer>
+<footer>
     <div class="container">
       <p>© 2026 CMS Team | Defterdar Muhasebe - Tüm hakları saklıdır.</p>
       <p style="margin-top: 12px;">Created By. İsmail DEMİRCAN <i class="fas fa-star-of-life" style="color: #d4af37;"></i></p>
       <p style="margin-top: 8px; font-size: 0.8rem;"><i class="fas fa-key"></i> Demo Giriş: DefterdarAdmin / Defterdar2024!</p>
     </div>
-  </footer>
+</footer>
 
-  <script>
+<script>
     (function() {
-      // Doğrudan indirme linki (GitHub release asset'in direkt linki)
-      // Bu link, v.1 release'indeki setup dosyasını doğrudan indirir
-      const DIRECT_DOWNLOAD_URL = "github.com/Cambazzzzzzz/icdermuhasebe/releases/download/v.1/DefterdarMuhasebe.exe";
+      // DÜZELTİLEN LİNK: https eklendi ve dosya yolu doğrulandı
+      const DIRECT_DOWNLOAD_URL = "https://github.com/Cambazzzzzzz/icdermuhasebe/releases/download/v.1/DefterdarMuhasebe.exe";
       
-      // İndirme fonksiyonu
       function startDownload() {
-        const link = document.createElement('a');
-        link.href = DIRECT_DOWNLOAD_URL;
-        link.download = 'DefterdarMuhasebe.exe'; // İndirilen dosya adı
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // Tarayıcı güvenliği için doğrudan window.location kullanımı daha stabildir
+        window.location.href = DIRECT_DOWNLOAD_URL;
       }
       
-      // Tüm indirme butonlarını seç ve olay ekle
       const downloadButtons = ['directDownloadBtn', 'indirNavBtn', 'ctaDownloadBtn'];
       downloadButtons.forEach(id => {
         const btn = document.getElementById(id);
@@ -484,13 +475,8 @@
         }
       });
       
-      // Alternatif: Eğer yukarıdaki direkt link çalışmazsa (asset ismi farklı olabilir),
-      // GitHub release sayfasına yönlendirip oradan manuel indirme yapılmasını sağlayan fallback
-      // Ama önce direkt indirmeyi dene, hata olursa release sayfasına yönlendir.
-      window.startDownload = startDownload;
-      
-      console.log("Defterdar Altın Sürüm | İndirme butonları direkt indirme başlatır. Giriş bilgileri: DefterdarAdmin / Defterdar2024!");
+      console.log("Defterdar Altın Sürüm | İndirme linki güncellendi.");
     })();
-  </script>
-  </body>
-  </html>
+</script>
+</body>
+</html>
