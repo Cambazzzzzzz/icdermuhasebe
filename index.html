@@ -2,12 +2,22 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Defterdar Muhasebe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defterdar | Yeni Nesil Muhasebe</title>
     <link rel="icon" href="defterdar.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+      :root {
+        --bg-deep: #050a18;
+        --bg-accent: #0f172a;
+        --primary-glow: #3b82f6;
+        --secondary-glow: #8b5cf6;
+        --gold-neon: #facc15;
+        --text-bright: #f8fafc;
+        --text-muted: #94a3b8;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -15,468 +25,281 @@
       }
 
       body {
-        font-family: 'Inter', sans-serif;
-        background: #0a1a0f;
-        color: #eef2e6;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-deep);
+        color: var(--text-bright);
         overflow-x: hidden;
-        scroll-behavior: smooth;
+        line-height: 1.6;
       }
 
-      .gradient-bg {
-        background: radial-gradient(circle at 25% 20%, rgba(212, 175, 55, 0.12), rgba(10, 26, 15, 0.95)), 
-                    linear-gradient(135deg, #0a1a0f 0%, #0c2312 100%);
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 32px;
-        border-radius: 60px;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        cursor: pointer;
-        border: none;
-        text-decoration: none;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #d4af37, #b58c1a);
-        color: #0a1f0c;
-        box-shadow: 0 10px 24px -6px rgba(212, 175, 55, 0.35);
-        font-weight: 700;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 20px 30px -12px rgba(212, 175, 55, 0.5);
-        background: linear-gradient(135deg, #e6c34a, #c79c28);
-      }
-
-      .btn-outline {
-        background: transparent;
-        border: 1.5px solid #d4af37;
-        color: #e9d7a3;
-      }
-
-      .btn-outline:hover {
-        border-color: #ecc63e;
-        background: rgba(212, 175, 55, 0.12);
-        transform: translateY(-2px);
+      /* Yenilikçi Gradyan Arka Plan */
+      .nebula-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+            radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+        z-index: -1;
       }
 
       .container {
-        max-width: 1280px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 0 32px;
+        padding: 0 24px;
       }
 
+      /* Navbar - Cam Tasarım */
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 28px 0 20px;
-        flex-wrap: wrap;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 20px 0;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
 
       .logo {
         display: flex;
         align-items: center;
-        gap: 14px;
-      }
-
-      .logo-icon {
-        width: 48px;
-        height: 48px;
-        background: #102312;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 6px 14px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 175, 55, 0.3);
-        overflow: hidden;
-      }
-
-      .logo-icon img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
-      .logo-icon .fallback-icon {
-        font-size: 1.9rem;
+        gap: 12px;
         font-weight: 800;
-        background: linear-gradient(135deg, #d4af37, #e6c34a);
-        background-clip: text;
+        font-size: 1.6rem;
+        background: linear-gradient(to right, #fff, var(--primary-glow));
         -webkit-background-clip: text;
-        color: transparent;
-        display: none;
+        -webkit-text-fill-color: transparent;
       }
 
-      .logo-text {
-        font-weight: 800;
-        font-size: 1.75rem;
-        letter-spacing: -0.8px;
-        background: linear-gradient(135deg, #fff6df, #d4af37);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-      .nav-links {
+      .nav-btns {
         display: flex;
-        gap: 38px;
-        align-items: center;
+        gap: 12px;
       }
 
-      .nav-links a {
+      /* Butonlar - Modern Glassmorphism */
+      .btn {
+        padding: 12px 28px;
+        border-radius: 12px;
+        font-weight: 600;
         text-decoration: none;
-        font-weight: 500;
-        color: #d9e0c5;
-        transition: 0.2s;
-      }
-
-      .nav-links a:hover {
-        color: #d4af37;
-      }
-
-      .hero {
-        padding: 70px 0 90px;
-        display: flex;
+        transition: all 0.4s ease;
+        display: inline-flex;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 56px;
-        justify-content: space-between;
+        gap: 8px;
+        cursor: pointer;
+        border: none;
       }
 
-      .hero-content {
-        flex: 1;
-        min-width: 280px;
+      .btn-glass {
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-bright);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-      .badge {
-        background: rgba(212, 175, 55, 0.18);
-        color: #e6c768;
-        border-radius: 80px;
-        padding: 6px 20px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        display: inline-block;
-        margin-bottom: 28px;
-        border: 1px solid rgba(212, 175, 55, 0.5);
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--primary-glow);
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+        color: white;
+        box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+      }
+
+      .btn-primary:hover {
+        box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.6);
+        transform: translateY(-3px);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 100px 0;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-badge {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--primary-glow);
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        margin-bottom: 30px;
       }
 
       .hero h1 {
-        font-size: 3.6rem;
+        font-size: 4.5rem;
         font-weight: 800;
-        line-height: 1.2;
-        letter-spacing: -1.5px;
-        background: linear-gradient(to right, #ffffff, #eedb88, #d4af37);
-        background-clip: text;
+        letter-spacing: -2px;
+        margin-bottom: 24px;
+        background: linear-gradient(to bottom, #fff 40%, #94a3b8);
         -webkit-background-clip: text;
-        color: transparent;
-        margin-bottom: 20px;
+        -webkit-text-fill-color: transparent;
       }
 
       .hero p {
-        font-size: 1.15rem;
-        color: #c8dbb4;
-        max-width: 540px;
-        margin-bottom: 36px;
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        max-width: 700px;
+        margin-bottom: 48px;
       }
 
-      .hero-buttons {
-        display: flex;
-        gap: 20px;
-        flex-wrap: wrap;
-        margin-bottom: 32px;
-      }
-
-      .login-info {
-        background: rgba(212, 175, 55, 0.1);
-        border: 1px solid rgba(212, 175, 55, 0.4);
+      /* Mockup Görüntüsü */
+      .app-preview {
+        width: 100%;
+        max-width: 1000px;
+        height: 500px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
         border-radius: 24px;
-        padding: 20px 28px;
-        margin-top: 20px;
-        display: inline-block;
-        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7);
+        position: relative;
+        overflow: hidden;
+        margin-top: 60px;
       }
 
-      .login-info h4 {
-        color: #d4af37;
-        margin-bottom: 12px;
-        font-size: 1rem;
-        letter-spacing: 1px;
+      .app-preview::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: rgba(255,255,255,0.03);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
       }
 
-      .login-info p {
-        margin: 6px 0;
-        font-size: 0.95rem;
-        color: #e9d7a3;
-        font-family: monospace;
-        letter-spacing: 0.5px;
-      }
-
-      .login-info i {
-        margin-right: 10px;
-        color: #d4af37;
-        width: 24px;
-      }
-
-      .hero-image {
-        flex: 1;
-        background: rgba(12, 30, 15, 0.65);
-        border-radius: 44px;
-        padding: 24px;
-        text-align: center;
-        border: 1px solid rgba(212, 175, 55, 0.35);
-        backdrop-filter: blur(6px);
-      }
-
-      .mockup {
-        background: #0b1e0e;
-        border-radius: 32px;
-        padding: 24px 20px;
-        border: 1px solid rgba(212, 175, 55, 0.25);
-      }
-
-      .mockup-bar {
-        background: linear-gradient(90deg, #d4af37, #b58c1a);
-        height: 8px;
-        border-radius: 20px;
-        width: 35%;
-        margin: 0 0 24px 0;
-      }
-
-      .grid-demo {
+      /* Özellikler Kartları */
+      .features {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        padding: 80px 0;
       }
 
-      .demo-card {
-        background: #132e19;
-        border-radius: 20px;
-        height: 85px;
-        border: 1px solid rgba(212, 175, 55, 0.15);
-        transition: 0.2s;
-      }
-      .demo-card:hover {
-        background: #1a4022;
-        border-color: #d4af37;
+      .f-card {
+        padding: 40px;
+        background: rgba(15, 23, 42, 0.5);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: 0.3s;
       }
 
-      .section {
-        padding: 90px 0;
+      .f-card:hover {
+        border-color: var(--primary-glow);
+        background: rgba(59, 130, 246, 0.03);
       }
 
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 18px;
-        color: #f9efcf;
-      }
-
-      .section-sub {
-        text-align: center;
-        color: #bdd6a5;
-        max-width: 620px;
-        margin: 0 auto 60px;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-        gap: 44px;
-      }
-
-      .feature-card {
-        background: rgba(10, 28, 13, 0.7);
-        backdrop-filter: blur(8px);
-        padding: 32px 28px;
-        border-radius: 36px;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(212, 175, 55, 0.2);
-      }
-
-      .feature-card:hover {
-        transform: translateY(-8px);
-        border-color: #d4af37;
-        background: rgba(16, 40, 19, 0.85);
-      }
-
-      .feature-icon {
-        background: rgba(212, 175, 55, 0.15);
-        width: 62px;
-        height: 62px;
-        border-radius: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.9rem;
-        color: #e7c35c;
-        margin-bottom: 28px;
-      }
-
-      .feature-card h3 {
-        color: #f7efcf;
-        margin-bottom: 14px;
-      }
-
-      .feature-card p {
-        color: #c2dfae;
-        line-height: 1.55;
-      }
-
-      .cta {
-        background: linear-gradient(115deg, #0c2b13, #051007);
-        border-radius: 56px;
-        padding: 64px 48px;
-        text-align: center;
-        border: 1px solid #d4af37;
-      }
-
-      .cta h2 {
-        font-size: 2.2rem;
-        margin-bottom: 18px;
-        color: #fff3da;
-      }
-
-      .cta .btn-primary {
-        margin-top: 10px;
+      .f-card i {
+        font-size: 2rem;
+        margin-bottom: 24px;
+        color: var(--gold-neon);
       }
 
       footer {
-        border-top: 1px solid rgba(212, 175, 55, 0.25);
-        padding: 50px 0;
+        padding: 60px 0;
         text-align: center;
-        color: #a2bf89;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
       }
 
-      @media (max-width: 800px) {
-        .hero h1 { font-size: 2.5rem; }
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.8rem; }
         .navbar { flex-direction: column; gap: 20px; }
-        .nav-links { gap: 28px; flex-wrap: wrap; }
-        .container { padding: 0 24px; }
-        .hero { padding: 40px 0; }
-        .login-info { padding: 14px 20px; }
-        .login-info p { font-size: 0.8rem; }
       }
     </style>
 </head>
 <body>
 
-<div class="gradient-bg">
-    <div class="container">
-      <nav class="navbar">
-        <div class="logo">
-          <div class="logo-icon">
-            <img src="defterdar.png" alt="Defterdar Logo" onerror="this.onerror=null; this.parentElement.querySelector('.fallback-icon').style.display='flex'; this.style.display='none';">
-            <div class="fallback-icon" style="display: none;">D</div>
-          </div>
-          <span class="logo-text">Defterdar Muhasebe</span>
-        </div>
-        <div class="nav-links">
-          <a href="#ozellikler"><i class="fas fa-crown"></i> Özellikler</a>
-          <a href="#" id="indirNavBtn"><i class="fas fa-gem"></i> İndir</a>
-        </div>
-      </nav>
-
-      <div class="hero">
-        <div class="hero-content">
-          <span class="badge"><i class="fas fa-medal"></i> Premium Yazılım Deneyimi</span>
-          <h1>Muhasebenin Altın Standardı<br>Defterdar ile Yükselin</h1>
-          <p>Demo sürümü tamamen ücretsiz, kurumsal güçte. e-Fatura, otomatik mutabakat, anlık altın raporlar. Dernekler, STK’lar ve işletmeler için geliştirilmiş profesyonel çözüm.</p>
-          <div class="hero-buttons">
-            <a href="#" class="btn btn-primary" id="directDownloadBtn"><i class="fas fa-download"></i> Hemen İndir</a>
-            <a href="#ozellikler" class="btn btn-outline"><i class="fas fa-play-circle"></i> Keşfet</a>
-          </div>
-          
-          <div class="login-info">
-            <h4><i class="fas fa-key"></i> Demo Giriş Bilgileri</h4>
-            <p><i class="fas fa-user"></i> Kullanıcı Adı: <strong style="color:#d4af37;">DefterdarAdmin</strong></p>
-            <p><i class="fas fa-lock"></i> Şifre: <strong style="color:#d4af37;">Defterdar2024!</strong></p>
-            <p style="font-size: 0.8rem; margin-top: 8px;"><i class="fas fa-info-circle"></i> Yazılımı kurduktan sonra bu bilgilerle giriş yapabilirsiniz.</p>
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="mockup">
-            <div class="mockup-bar"></div>
-            <div class="grid-demo">
-              <div class="demo-card"></div><div class="demo-card"></div><div class="demo-card"></div>
-              <div class="demo-card"></div><div class="demo-card"></div><div class="demo-card"></div>
-            </div>
-            <div style="margin-top: 20px; font-size: 0.75rem; color: #e7c35c;"><i class="fas fa-chart-line"></i> Gerçek zamanlı gösterge paneli</div>
-          </div>
-        </div>
-      </div>
-    </div>
-</div>
-
-<div class="container" id="ozellikler">
-    <div class="section">
-      <div class="section-title"><i class="fas fa-gem" style="color: #d4af37; margin-right: 12px;"></i>Neden Defterdar?</div>
-      <div class="section-sub">Akıllı analiz, yasal uyum ve altın standartta güvenlik. Muhasebe süreçlerinizi yeniden tanımlayın.</div>
-      <div class="features-grid">
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>Gerçek Zamanlı Analiz</h3><p>Altın destekli dashboard ile nakit akışı, kar-zarar ve bilanço anlık takip. Tahmine dayalı raporlama.</p></div>
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-file-invoice"></i></div><h3>e-Fatura & e-Arşiv</h3><p>Entegre fatura yönetimi, otomatik muhasebeleştirme ve mevzuata %100 uyum. Dijital defterlere anında aktarım.</p></div>
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Kurumlara Özel Uyum</h3><p>Dernekler, vakıflar, STK'lar ve tüm işletmeler için özel modüller. Yasal defterlere tam uyumluluk.</p></div>
-      </div>
-    </div>
-</div>
+<div class="nebula-bg"></div>
 
 <div class="container">
-    <div class="section">
-      <div class="cta">
-        <h2><i class="fas fa-crown" style="color: #d4af37;"></i> Defterdar’ı bugün keşfetmeye başlayın</h2>
-        <p>Demo sürümü ücretsiz, tüm özellikler açık. Kredi kartı gerekmez, hemen başlayın.</p>
-        <a href="#" class="btn btn-primary" id="ctaDownloadBtn"><i class="fas fa-rocket"></i> Ücretsiz İndir</a>
-        <div style="margin-top: 24px;">
-          <div class="login-info" style="display: inline-block; text-align: left;">
-            <h4><i class="fas fa-key"></i> Giriş Bilgileri</h4>
-            <p><i class="fas fa-user"></i> Kullanıcı Adı: <strong>DefterdarAdmin</strong></p>
-            <p><i class="fas fa-lock"></i> Şifre: <strong>Defterdar2024!</strong></p>
-          </div>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-layer-group"></i> DEFTERDAR
         </div>
-      </div>
-    </div>
+        <div class="nav-btns">
+            <a href="https://web-production-7c464.up.railway.app/giris.html" class="btn btn-glass">Giriş</a>
+            <a href="https://web-production-7c464.up.railway.app/giris.html" class="btn btn-primary">Hemen Katıl</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">YENİ NESİL V.2.0 ŞİMDİ YAYINDA</div>
+        <h1>Muhasebe Hiç Bu Kadar<br>Zarif Olmamıştı.</h1>
+        <p>Geleceğin finansal yönetim sistemine hoş geldiniz. Güçlü, akıllı ve tamamen sizin kontrolünüzde olan bir deneyim.</p>
+        
+        <div style="display: flex; gap: 20px;">
+            <a href="#" class="btn btn-primary" id="btnDownload" style="padding: 16px 40px; font-size: 1.1rem;">
+                <i class="fas fa-cloud-arrow-down"></i> İndir
+            </a>
+            <a href="https://web-production-7c464.up.railway.app/giris.html" class="btn btn-glass" style="padding: 16px 40px; font-size: 1.1rem;">
+                Tarayıcıdan Gir 
+            </a>
+        </div>
+
+        <div class="app-preview">
+            <div style="padding: 60px 40px; text-align: left;">
+                <div style="width: 200px; height: 12px; background: rgba(255,255,255,0.1); border-radius: 6px; margin-bottom: 30px;"></div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <div style="height: 120px; background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.2), transparent); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.2);"></div>
+                    <div style="height: 120px; background: rgba(255,255,255,0.02); border-radius: 16px;"></div>
+                    <div style="height: 120px; background: rgba(255,255,255,0.02); border-radius: 16px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="f-card">
+            <i class="fas fa-microchip"></i>
+            <h3>Yapay Zeka Destekli</h3>
+            <p>Harcamalarınızı otomatik kategorize eden ve geleceği tahmin eden akıllı algoritma.</p>
+        </div>
+        <div class="f-card">
+            <i class="fas fa-shield-halved"></i>
+            <h3>Kriptografik Güvenlik</h3>
+            <p>Verileriniz uçtan uca şifrelenmiş olarak en güvenli bulut sunucularımızda saklanır.</p>
+        </div>
+        <div class="f-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Anlık Raporlama</h3>
+            <p>Finansal durumunuzu saniyelik güncellemelerle, karmaşık tablolardan uzak, temiz grafiklerle görün.</p>
+        </div>
+    </section>
 </div>
 
 <footer>
     <div class="container">
-      <p>© 2026 CMS Team | Defterdar Muhasebe - Tüm hakları saklıdır.</p>
-      <p style="margin-top: 12px;">Created By. İsmail DEMİRCAN <i class="fas fa-star-of-life" style="color: #d4af37;"></i></p>
-      <p style="margin-top: 8px; font-size: 0.8rem;"><i class="fas fa-key"></i> Demo Giriş: DefterdarAdmin / Defterdar2024!</p>
+        <p>© 2026 Defterdar Muhasebe - Tüm Hakları Saklıdır.</p>
+        <p style="margin-top: 10px; color: var(--text-bright);">
+            Powered by <span style="color: var(--gold-neon); font-weight: 800;">İsmail DEMİRCAN</span>
+        </p>
     </div>
 </footer>
 
 <script>
-    (function() {
-      // DÜZELTİLEN LİNK: https eklendi ve dosya yolu doğrulandı
-      const DIRECT_DOWNLOAD_URL = "https://github.com/Cambazzzzzzz/icdermuhasebe/releases/download/v.1/DefterdarMuhasebe.exe";
-      
-      function startDownload() {
-        // Tarayıcı güvenliği için doğrudan window.location kullanımı daha stabildir
-        window.location.href = DIRECT_DOWNLOAD_URL;
-      }
-      
-      const downloadButtons = ['directDownloadBtn', 'indirNavBtn', 'ctaDownloadBtn'];
-      downloadButtons.forEach(id => {
-        const btn = document.getElementById(id);
-        if(btn) {
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            startDownload();
-          });
-        }
-      });
-      
-      console.log("Defterdar Altın Sürüm | İndirme linki güncellendi.");
-    })();
+    const DOWNLOAD_URL = "https://github.com/Cambazzzzzzz/icdermuhasebe/releases/download/v.1/DefterdarMuhasebe.exe";
+    
+    document.getElementById('btnDownload').addEventListener('click', function(e) {
+        e.preventDefault();
+        const a = document.createElement('a');
+        a.href = DOWNLOAD_URL;
+        a.download = 'Defterdar_Setup.exe';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
 </script>
 </body>
 </html>
